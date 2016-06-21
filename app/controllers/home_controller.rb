@@ -4,4 +4,5 @@ class HomeController < ApplicationController
   # GET /homes.json
   def index
   end
+  
 end
