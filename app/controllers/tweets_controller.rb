@@ -11,22 +11,30 @@ class TweetsController < ApplicationController
   end
 
   def create
-  @article = Article.new(article_params)
+  @tweet = Tweet.new(params)
 
-    if @article.save
-      redirect_to @article
+    if @tweet.save
+      redirect_to @tweet
     else
       render 'new'
     end
   end
 
   def update
-    @article = Article.find(params[:id])
+    @tweet = Tweet.find(params[:id])
 
-    if @article.update(article_params)
-      redirect_to @article
+    if @tweet.update(tweet_params)
+      redirect_to @tweet
     else
       render 'edit'
     end
   end
+
+  def destroy
+  @tweet = Tweet.find(params[:id])
+  @tweet.destroy
+
+  redirect_to tweets_path
+  end
+
 end
